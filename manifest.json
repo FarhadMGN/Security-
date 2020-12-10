@@ -1,0 +1,21 @@
+{
+  "manifest_version": 2,
+  "name": "Simple Chrome Ext",
+  "description": "Simple Chrome Extension as an example",
+  "version": "1.00",
+  "author": "John",
+  "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
+  "background": {
+    "persistent": true,
+    "scripts": ["/extention/extension.js"]
+  },
+  "browser_action": {
+    "default_title": "Chrome ext"
+  },
+  "content_scripts": [{
+    "matches": ["<all_urls>"],
+    "js": ["/extention/extension.js"],
+    "run_at":"document_end"
+  }],
+  "permissions": ["activeTab", "tabs", "storage"]
+}

@@ -1,0 +1,18 @@
+<ng-container *ngIf="!!apps; else loader">
+  <button mat-raised-button
+          color="primary"
+          class="add-button"
+          (click)="addApp()"
+  >Add New</button>
+  <div class="store-wrapper">
+    <div
+      class="store-element"
+      *ngFor="let app of apps">
+      <app-application [app]="app"></app-application>
+    </div>
+  </div>
+</ng-container>
+
+<ng-template #loader>
+  <p>please wait</p>
+</ng-template>

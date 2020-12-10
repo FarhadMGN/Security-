@@ -1,0 +1,15 @@
+<div class="header">
+  <div class="header-name">
+    Password' Store
+  </div>
+  <div class="header-options">
+      <button mat-raised-button color="primary"
+              (click)="auth.logout()"
+              [routerLink]="['/']"
+              *ngIf="auth.isAuthenticated()"
+      >Sign Out</button>
+  </div>
+
+</div>
+
+

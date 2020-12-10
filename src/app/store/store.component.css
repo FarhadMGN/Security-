@@ -1,0 +1,17 @@
+.store-element {
+  display: inline-block;
+  width: 600px;
+  border-radius: 8px;
+  border: 3px solid cadetblue;
+  padding: 14px;
+  margin-top: 8px;
+  height: 48px;
+}
+
+.store-wrapper {
+  text-align: center;
+}
+
+.add-button {
+  margin: 4px 0 0 25%;
+}

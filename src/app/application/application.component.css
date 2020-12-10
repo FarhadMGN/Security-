@@ -1,0 +1,23 @@
+.application {
+  display: flex;
+  flex-direction: row;
+}
+
+.application-name {
+  text-align: center;
+  min-width: 100px;
+  flex-grow: 1;
+}
+
+.application-login {
+  text-align: center;
+  flex-grow: 1;
+  max-width: 200px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.application-btn {
+  text-align: center;
+  flex-grow: 1;
+}
