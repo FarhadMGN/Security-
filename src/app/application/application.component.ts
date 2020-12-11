@@ -21,13 +21,13 @@ export class ApplicationComponent implements OnInit {
   _insertPassword() {
     console.log(this.app);
     this.http.get('http://localhost:8080/api/userInfo?relatedURL=' + this.app.relatedURL + '&login=' + this.app.login)
-      .subscribe((res) => {
+      .subscribe((res: Application) => {
         console.log('res after pswd request = ', res);
-        //chrome.storage.local.set({"newPassword": ''});
-        //chrome.storage.local.set({'newPassword': this.app.password});
+        chrome.storage.local.set({"newPassword": ''});
+        chrome.storage.local.set({'newPassword': res.password});
       },
         (err) => {
           console.log('err after pswd request is ', err);
-        })
+        });
   }
 }
