@@ -18,18 +18,14 @@ export class StoreComponent implements OnInit {
 
   ngOnInit() {
     //TODO get all data from back
-      this.apps = [   {
-        relatedURL: 'Vk',
-        login: 'My-login'
-      },
-        {
-          relatedURL: 'Odnoclassniki',
-          login: 'odno-login'
-        }];
-      // this.http.get('localhost:8080/api/userInfo/getAllData').subscribe(
-      //   (res) => {},
-      //   (err) => {}
-      // );
+      this.http.get('http://localhost:8080/api/userInfo/getAllData').subscribe(
+        (res) => {
+          console.log('res', res);
+        },
+        (err) => {
+          console.log('err', err);
+        }
+      );
   }
 
   addApp() {
@@ -42,9 +38,9 @@ export class StoreComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed', result);
       this.http.post('http://localhost:8080/api/userInfo', result).subscribe((res) => {
-           console.log(res);
-           this.apps.push(result);
-      },
+          console.log(res);
+          this.apps.push(result);
+        },
         (err) => {
           console.log('err', err);
         });
@@ -110,8 +106,5 @@ export class DialogOverviewExampleDialogComponent implements OnInit {
       password: this.form.value.password,
       relatedURL: this.form.value.relatedURL,
     };
-    // this.http.get('http://localhost:8080/api/userInfo', ).subscribe((res) => {
-    //   console.log(res);
-    // })
   }
 }

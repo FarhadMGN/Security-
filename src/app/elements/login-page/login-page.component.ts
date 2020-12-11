@@ -28,7 +28,7 @@ export class LoginPageComponent implements OnInit {
     });
   }
 
-  public submit() {
+  public submit(isRegist?: boolean) {
     if (this.form.invalid) {
       return;
     }
@@ -36,13 +36,23 @@ export class LoginPageComponent implements OnInit {
       login: this.form.value.login,
       password: this.form.value.password
     };
-    this.auth.login(user).subscribe((res) => {
-      console.log(res);
-      this.router.navigate(['/store']);
-    },
-      err => {
-      console.log('err', err);
-      });
+    if (isRegist) {
+      this.auth.register(user).subscribe((res) => {
+          console.log(res);
+          this.router.navigate(['/store']);
+        },
+        err => {
+          console.log('err', err);
+        });
+    } else {
+      this.auth.login(user).subscribe((res) => {
+          console.log(res);
+          this.router.navigate(['/store']);
+        },
+        err => {
+          console.log('err', err);
+        });
+    }
 
     // this.auth.login(user).subscribe(() => {
     //   this.form.reset();

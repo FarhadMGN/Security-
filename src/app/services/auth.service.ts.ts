@@ -11,6 +11,8 @@ export class AuthService {
   //url = 'http://localhost:8080/api/user';
   //url = 0;
   private isAuth;
+
+  //'http://localhost:8080/api/user/authorize?login=' + user.login + '&password=' + user.password
   constructor(private http: HttpClient) {
   }
 
@@ -29,6 +31,12 @@ export class AuthService {
 
   logout() {
     this.isAuth = false;
+  }
+
+  register(user: User): Observable<any> {
+    return this.http.post('http://localhost:8080/api/user', user)
+      .pipe(
+      );
   }
 
   isAuthenticated(): boolean {
