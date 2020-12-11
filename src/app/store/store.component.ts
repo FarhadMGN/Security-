@@ -18,8 +18,13 @@ export class StoreComponent implements OnInit {
 
   ngOnInit() {
     //TODO get all data from back
-      this.http.get('http://localhost:8080/api/userInfo/getAllData').subscribe(
-        (res) => {
+    this.apps = [{
+      login: 'string',
+      relatedURL: 'string'
+    }];
+    this.http.get('http://localhost:8080/api/userInfo/getAllData').subscribe(
+        (res: Application[]) => {
+          this.apps = res;
           console.log('res', res);
         },
         (err) => {
@@ -101,10 +106,5 @@ export class DialogOverviewExampleDialogComponent implements OnInit {
   }
 
   submit() {
-    const userInfo  = {
-      login: this.form.value.login,
-      password: this.form.value.password,
-      relatedURL: this.form.value.relatedURL,
-    };
   }
 }
