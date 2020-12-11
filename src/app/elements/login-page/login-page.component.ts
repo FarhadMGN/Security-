@@ -14,7 +14,8 @@ export class LoginPageComponent implements OnInit {
   form: FormGroup;
 
   constructor(
-    private auth: AuthService
+    private auth: AuthService,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -35,9 +36,13 @@ export class LoginPageComponent implements OnInit {
       login: this.form.value.login,
       password: this.form.value.password
     };
-    console.log(user);
-    this.auth.login(user).subscribe(() => {
-    });
+    this.auth.login(user).subscribe((res) => {
+      console.log(res);
+      this.router.navigate(['/store']);
+    },
+      err => {
+      console.log('err', err);
+      });
 
     // this.auth.login(user).subscribe(() => {
     //   this.form.reset();
